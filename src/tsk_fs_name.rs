@@ -29,6 +29,11 @@ impl TskFsName {
         type_ == tsk::TSK_FS_NAME_TYPE_ENUM_TSK_FS_NAME_TYPE_DIR
     }
 
+    pub fn is_reg_file(&self) -> bool{
+        let type_ = unsafe {(*self.0).type_};
+        type_ == tsk::TSK_FS_NAME_TYPE_ENUM_TSK_FS_NAME_TYPE_REG
+    }
+
     /// Get the inode for this TSK_FS_NAME
     pub fn get_inode(&self) -> u64 {
         unsafe {(*self.0).meta_addr}

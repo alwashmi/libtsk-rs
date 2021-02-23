@@ -61,11 +61,11 @@ fn main() {
     let file_name_iter = tsk_fs.iter_file_names()
         .expect("Could not get Fs File iter");
 
-    let mut file_count = 0;
+    // let mut file_count = 0;
     for (path, fs_name) in file_name_iter {
         if let Some(name) = fs_name.name() {
             println!("{}/{}", path, name);
         }
-        file_count += 1;
+        // file_count += 1;
     }
 }

@@ -30,6 +30,16 @@ impl TskVsPart {
     pub fn into_iter(self) -> TskVsPartIterator {
         TskVsPartIterator(self.0)
     }
+
+    /// Get the slot number of the partition
+    pub fn slot(self: &Self) -> i8{
+        unsafe {*self.0}.slot_num
+    }
+
+    /// Get the start of the partition
+    pub fn start(self: &Self) -> u64{
+        unsafe {*self.0}.start
+    }
 }
 impl std::fmt::Debug for TskVsPart {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {

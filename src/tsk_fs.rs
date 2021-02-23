@@ -61,6 +61,10 @@ impl TskFs {
             path_stack: Vec::new()
         } )
     }
+
+    pub fn root_inum(&self) -> u64{
+        unsafe {(*self.tsk_fs_ptr).root_inum}
+    }
 }
 impl Into<*mut tsk::TSK_FS_INFO> for &TskFs {
     fn into(self) -> *mut tsk::TSK_FS_INFO {

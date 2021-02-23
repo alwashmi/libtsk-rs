@@ -4,6 +4,7 @@ use crate::{
     errors::TskError,
     tsk_fs::TskFs,
     tsk_fs_meta::TskFsMeta,
+    tsk_fs_name::TskFsName,
     tsk_fs_attr::{TskFsAttr, TskFsAttrIterator},
     tsk_fs_file_handler::TskFsFileHandle,
     bindings as tsk
@@ -121,6 +122,11 @@ impl<'fs> TskFsFile<'fs> {
     /// Get the TskFsMeta for this TskFsFile
     pub fn get_meta(&self) -> Result<TskFsMeta, TskError> {
         TskFsMeta::from_ptr(unsafe{(*self.tsk_fs_file_ptr).meta})
+    }
+
+    /// Get the TskFsName for this TskFsFile
+    pub fn get_name(&self) -> Result<TskFsName, TskError> {
+        TskFsName::from_ptr(unsafe{(*self.tsk_fs_file_ptr).name})
     }
 
     /// Get the TskFsFileHandle for this TskFsFile

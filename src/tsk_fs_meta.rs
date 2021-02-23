@@ -7,8 +7,8 @@ use crate::{
 /// Wrapper for TSK_FS_META
 pub struct TskFsMeta(*const tsk::TSK_FS_META);
 impl TskFsMeta {
-    pub fn from_ptr(TSK_FS_META: *const tsk::TSK_FS_META) -> Result<Self, TskError> {
-        if TSK_FS_META.is_null() {
+    pub fn from_ptr(tsk_fs_meta: *const tsk::TSK_FS_META) -> Result<Self, TskError> {
+        if tsk_fs_meta.is_null() {
             // Get a ptr to the error msg
             let error_msg_ptr = unsafe { tsk::tsk_error_get() };
             // Get the error message from the string
@@ -19,7 +19,7 @@ impl TskFsMeta {
             ));
         }
 
-        Ok(Self(TSK_FS_META))
+        Ok(Self(tsk_fs_meta))
     }
 
     /// Get the size of the file

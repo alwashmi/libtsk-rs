@@ -56,6 +56,11 @@ impl TskImg {
     pub fn get_fs_from_offset(&self, offset: u64) -> Result<TskFs, TskError> {
         TskFs::from_fs_offset(&self, offset)
     }
+
+    /// Get sector size
+    pub fn sector_size(&self) -> u32{
+        unsafe {self.handle.as_ref()}.sector_size
+    }
 }
 impl Drop for TskImg {
     fn drop(&mut self) {
